@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Floas VC — Explore. Converse. Faça novas amizades.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="loading">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Carregando mundo...</div>
+    </div>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">Floas<span>VC</span></div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#estatisticas">Descrição</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
+                <li><a href="https://discord.com/channels/1390544673998766115/1512975646077223132" target="_blank" class="btn-small">Suporte</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="floating-island"></div>
+            <div class="floating-island"></div>
+            <div class="floating-island"></div>
+            <div class="hero-bg-image"></div>
+            <div class="hero-bg-image-top-right"></div>
+        </div>
+        <div class="hero-trees">
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-logo-sub">✦ Um mundo de fantasia no Roblox ✦</div>
+            <h1>Explore. Converse. <br /><span class="highlight">Faça novas amizades.</span></h1>
+            <p>Entre no universo do Floas VC e descubra ilhas incríveis, missões, pesca, eventos ao vivo e uma comunidade única.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.gg/t2CzaGvvTW" target="_blank" class="btn-glow" rel="noopener">
+                    <span class="icon">🎮</span> Entrar no Discord
+                </a>
+                <a href="https://www.tiktok.com/@floasvc?_r=1&_t=ZS-97vnHwW9YcX" target="_blank" class="btn-outline-glow" rel="noopener">
+                    <span class="icon">🎵</span> Seguir no TikTok
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" style="padding:60px 0 20px;">
+        <div class="container">
+            <h2 class="section-title reveal">O que é <span style="background:linear-gradient(135deg,var(--roxo),var(--azul));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Floas VC</span>?</h2>
+            <p class="section-sub reveal">Um universo vibrante onde cada ilha guarda uma nova aventura e cada encontro pode se tornar uma amizade para sempre.</p>
+            <div class="cards-grid">
+                <div class="card-feature reveal reveal-delay-1">
+                    <span class="icon">👥</span>
+                    <h3>Conheça novas pessoas</h3>
+                    <p>Comunidade acolhedora e ativa, pronta para jogar e conversar.</p>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="card-feature reveal reveal-delay-2">
+                    <span class="icon">🎣</span>
+                    <h3>Sistema de pesca</h3>
+                    <p>Relaxe e pesque em diversos biomas com recompensas exclusivas.</p>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="card-feature reveal reveal-delay-3">
+                    <span class="icon">🗺️</span>
+                    <h3>Explore diversas ilhas</h3>
+                    <p>Cada ilha tem sua própria cultura, missões e segredos escondidos.</p>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="card-feature reveal reveal-delay-4">
+                    <span class="icon">⭐</span>
+                    <h3>Missões exclusivas</h3>
+                    <p>Desafios diários e semanais que recompensam os aventureiros.</p>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="card-feature reveal reveal-delay-5">
+                    <span class="icon">✨</span>
+                    <h3>Personalização completa</h3>
+                    <p>Visuais, acessórios e efeitos para deixar seu personagem único.</p>
+                    <div class="glow-line"></div>
+                </div>
+                <div class="card-feature reveal reveal-delay-6">
+                    <span class="icon">🎉</span>
+                    <h3>Eventos ao vivo</h3>
+                    <p>Festas, competições e encontros com a comunidade toda semana.</p>
+                    <div class="glow-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title reveal">Galeria</h2>
+            <p class="section-sub reveal">Momentos mágicos capturados no mundo de Floas VC.</p>
+            <div class="carousel reveal" id="carousel">
+                <div class="carousel-track" id="carouselTrack"></div>
+                <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">‹</button>
+                <button class="carousel-btn next" id="carouselNext" aria-label="Próximo">›</button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <section id="estatisticas" class="stats-section">
+        <div class="container">
+            <h2 class="section-title reveal">Descubra O universo<span style="background:linear-gradient(135deg,var(--roxo),var(--azul));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"> Floas</span></h2>
+            <p class="section-sub reveal">Um universo mágico no Roblox onde amizade, exploração e magia se encontram.</p>
+            <div class="stats-grid">
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="label-azul">Um mundo acima das nuvens</div>
+                    <div class="sub-label-clara">
+                        Floas VC leva você para um universo formado por ilhas flutuantes, onde cada local possui sua própria identidade, cenários impressionantes e segredos esperando para serem descobertos. Viaje por paisagens únicas e mergulhe em um ambiente criado para incentivar a exploração e a curiosidade.
+                    </div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="label-azul">Uma aventura que evolui com você</div>
+                    <div class="sub-label-clara">
+                        Durante sua jornada, novas áreas, desafios e recompensas podem ser desbloqueados conforme você avança. Cada conquista representa um novo passo na sua história, permitindo que cada jogador construa uma experiência diferente e descubra novos objetivos pelo caminho.
+                    </div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="label-azul">Um universo cheio de possibilidades</div>
+                    <div class="sub-label-clara">
+                        O mundo de Floas VC foi desenvolvido para proporcionar momentos únicos em cada sessão. Explore locais escondidos, descubra detalhes espalhados pelo mapa, encontre surpresas e aproveite um ambiente rico em elementos que tornam cada exploração uma nova aventura.
+                    </div>
+                </div>
+                <div class="stat-item reveal reveal-delay-4">
+                    <div class="label-azul">Sua história começa aqui</div>
+                    <div class="sub-label-clara">
+                        Seja para relaxar, explorar um novo mundo ou viver grandes aventuras, Floas VC oferece um universo onde cada jogador pode criar sua própria jornada. Reúna amigos, descubra novos horizontes e faça parte de uma comunidade que cresce e evolui junto com o jogo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comunidade" class="community-section">
+        <div class="bg-glow"></div>
+        <div class="container">
+            <div class="community-box reveal">
+                <h2>Faça parte da comunidade <br />Floas VC</h2>
+                <p>Converse com jogadores, participe de eventos, acompanhe novidades e ajude a construir o futuro do Floas VC.</p>
+                <a href="https://www.roblox.com/pt/games/129112541086553/Floas-VC" target="_blank" class="btn-giant" rel="noopener">
+                    🎮 Venhar jogar também!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tiktok-section">
+        <div class="container">
+            <div class="tiktok-box reveal">
+                <span class="tiktok-icon">🎵</span>
+                <h3>TikTok oficial</h3>
+                <p>Veja vídeos, atualizações e momentos da comunidade.</p>
+                <a href="https://www.tiktok.com/@floasvc?_r=1&_t=ZS-97vnHwW9YcX" target="_blank" class="btn-glow" rel="noopener" style="font-size:18px;padding:14px 40px;">
+                    <span class="icon">🎵</span> Seguir @floasvc
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="brand">
+                <div class="logo">Floas<span>VC</span></div>
+                <div class="copy">© 2026 Floas VC. Todos os direitos reservados.</div>
+            </div>
+            <div class="links">
+                <a href="#sobre">Sobre</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#comunidade">Comunidade</a>
+                <a href="https://discord.gg/t2CzaGvvTW" target="_blank">Discord</a>
+                <a href="https://www.tiktok.com/@floasvc?_r=1&_t=ZS-97vnHwW9YcX" target="_blank">TikTok</a>
+            </div>
+            <div class="socials">
+                <a href="https://www.instagram.com/lms_digitall?igsh=MWMyeW9ubXh2empocg==" target="_blank" aria-label="Discord"><img src="assets/lmslog-photoaidcom-cropped.jpeg" alt="" height="70" title="Site feito por LM-S digital"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        //  LOADING
+        // ============================================================
+        window.addEventListener('load', () => {
+            document.getElementById('loading').classList.add('hide');
+        });
+
+        // ============================================================
+        //  CUSTOM CURSOR
+        // ============================================================
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        let mouseX = 0,
+            mouseY = 0;
+        let ringX = 0,
+            ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button, .card-feature, .carousel-btn, .stat-item, .btn-glow, .btn-outline-glow, .btn-giant')
+            .forEach(el => {
+                el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+            });
+
+        // ============================================================
+        //  PARTICLES (Canvas)
+        // ============================================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.hue = Math.random() > 0.5 ? 250 + Math.random() * 30 : 210 + Math.random() * 30;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 80%, 70%, ${this.opacity})`;
+                ctx.fill();
+                ctx.shadowColor = `hsla(${this.hue}, 80%, 70%, 0.2)`;
+                ctx.shadowBlur = 12;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        const alpha = (1 - dist / 120) * 0.12;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(123, 92, 255, ${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // ============================================================
+        //  HEADER SCROLL
+        // ============================================================
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ============================================================
+        //  HAMBURGER
+        // ============================================================
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ============================================================
+        //  SCROLL REVEAL (Intersection Observer)
+        // ============================================================
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ============================================================
+        //  CAROUSEL
+        // ============================================================
+        const slides = [
+            { id: 1, label: 'Ilha Flutuante', img: 'assets/image_principal.png' },
+            { id: 2, label: 'Floresta Encantada', img: 'assets/paisagem_1.png' },
+            { id: 3, label: 'Pôr do Sol Mágico', img: 'assets/image_paisagem2.png' },
+            { id: 4, label: 'Vila dos Aventureiros', img: 'assets/image_paisagem3.png' },
+        ];
+
+        const track = document.getElementById('carouselTrack');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentSlide = 0;
+        let autoPlayInterval;
+
+        slides.forEach((s, idx) => {
+            const div = document.createElement('div');
+            div.className = 'carousel-slide';
+            div.innerHTML = `
+                <img src="${s.img}" alt="${s.label}" loading="lazy" />
+                <div class="slide-overlay"></div>
+                <div class="slide-reflect"></div>
+            `;
+            track.appendChild(div);
+
+            const dot = document.createElement('button');
+            dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+            dot.dataset.index = idx;
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(idx));
+            dotsContainer.appendChild(dot);
+        });
+
+        function goToSlide(index) {
+            currentSlide = index;
+            const total = slides.length;
+            if (currentSlide < 0) currentSlide = total - 1;
+            if (currentSlide >= total) currentSlide = 0;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.querySelectorAll('.carousel-dots button').forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        document.getElementById('carouselPrev').addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
+            resetAutoPlay();
+        });
+        document.getElementById('carouselNext').addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+            resetAutoPlay();
+        });
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+        }
+        resetAutoPlay();
+
+        const carousel = document.getElementById('carousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        carousel.addEventListener('mouseleave', resetAutoPlay);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { goToSlide(currentSlide - 1);
+                resetAutoPlay(); }
+            if (e.key === 'ArrowRight') { goToSlide(currentSlide + 1);
+                resetAutoPlay(); }
+        });
+
+        // ============================================================
+        //  STATISTICS COUNTER
+        // ============================================================
+        const statNumbers = document.querySelectorAll('.stat-item .number');
+        let countersAnimated = false;
+
+        function animateCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+            statNumbers.forEach(el => {
+                const target = parseInt(el.dataset.count, 10);
+                const suffix = el.dataset.suffix || '';
+                let current = 0;
+                const step = Math.max(1, Math.ceil(target / 60));
+                const interval = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(interval);
+                    }
+                    el.textContent = current + suffix;
+                }, 25);
+            });
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelector('.stats-section').querySelectorAll('.stat-item').forEach(el => {
+            statsObserver.observe(el);
+        });
+
+        // ============================================================
+        //  SMOOTH ANCHOR SCROLL
+        // ============================================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============================================================
+        //  PARALLAX on Hero (mouse move)
+        // ============================================================
+        const hero = document.querySelector('.hero');
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            const islands = hero.querySelectorAll('.floating-island');
+            islands.forEach((el, i) => {
+                const speed = 8 + i * 4;
+                el.style.transform = `translate(${x * speed}px, ${y * speed * 0.6}px) rotate(${x * 2}deg)`;
+            });
+            const orbs = hero.querySelectorAll('.hero-bg .orb');
+            orbs.forEach((el, i) => {
+                const speed = 12 + i * 6;
+                el.style.transform = `translate(${x * speed * 0.5}px, ${y * speed * 0.4}px) scale(1.05)`;
+            });
+        });
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        console.log('🌿 Floas VC — Explore. Converse. Faça novas amizades.');
+        console.log('🎮 Discord: https://discord.gg/t2CzaGvvTW');
+        console.log('🎵 TikTok: https://www.tiktok.com/@floasvc');
+    </script>
+</body>
+</html>
